@@ -7,15 +7,25 @@ import GroupRoundedIcon from '@material-ui/icons/GroupRounded';
 import ApartmentRoundedIcon from '@material-ui/icons/ApartmentRounded';
 import ExitToAppRoundedIcon from '@material-ui/icons/ExitToAppRounded';
 
-const Sidebar = ({ open }) => {
+const Sidebar = ({ open, setOpen }) => {
     const [link, setLink] = useState('dashboard');
     return (
         <div className={open ? 's-navbar' : 'l-navbar'}>
-            <div className="toggle-div">
+            <div className="toggle-div" onClick={() => setOpen(!open)}>
                 <div className="toggle-button">
                     <div className="toggle-top"></div>
                     <div className="toggle-btn">
-                        <div className="toggle-btn-icon">a</div>
+                        <div className="toggle-btn-icon">
+                            <span
+                                style={{
+                                    marginLeft: 3,
+                                    fontSize: 25,
+                                    fontWeight: 600,
+                                }}
+                            >
+                                {open ? '+' : '-'}
+                            </span>
+                        </div>
                     </div>
                     <div className="toggle-bottom"></div>
                 </div>
