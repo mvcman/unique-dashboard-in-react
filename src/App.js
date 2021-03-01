@@ -1,25 +1,25 @@
-import logo from './logo.svg';
 import './App.css';
+import { useState } from 'react';
+import { Switch, Route } from 'react-router-dom';
+import Header from './Components/Header/Header';
+import Sidebar from './Components/Sidebar/Sidebar';
+import Main from './Components/Main/Main';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const [open, setOpen] = useState(false);
+    return (
+        <div className="App">
+            <Header open={open} setOpen={setOpen} />
+            <Sidebar open={open} setOpen={setOpen} />
+            <div className={open ? 'App_body1' : 'App__body'}>
+                <Switch>
+                    <Route exact path="/">
+                        <Main />
+                    </Route>
+                </Switch>
+            </div>
+        </div>
+    );
 }
 
 export default App;
